@@ -1,0 +1,71 @@
+.btn-click {
+    background-color: #111 !important;
+}
+
+.btn-click-light {
+    background-color: #aaa !important;
+}
+
+.btn-text {
+    left: 5%;
+    right: 5%;
+    top: 5%;
+    bottom: 5%;
+    color: #fff;
+    font-size: 22px;
+}
+
+.btn-text-dark {
+    color: #000;
+}
+
+.btn-text-small {
+    font-size: 17px;
+    text-align: left;
+}
+
+.waveform-container {
+    width: 100%;
+}
+
+.waveform {
+    height: 100%;
+    left: 325px;
+    right: 100px;
+}
+
+.waveform-lmb-type {
+    height: 100%;
+    right: 0;
+    width: 100px;
+}
+
+.waveform-lmb-type-text {
+    height: 50px;
+    width: 100%;
+    color: #fff;
+    font-size: 19px;
+    text-align: center;
+    padding-left: 5%;
+    border-width: 1px;
+    border-color: #777;
+    background-color: #222;
+}
+
+.waveform-lmb-type-btn {
+    height: 50px;
+    width: 100%;
+    background-color: #000;
+    border-width: 1px;
+    border-color: #777;
+}
+
+.waveform-lmb-type-btn-active {
+    background-color: #282;
+}
+
+.waveform-scrollbar {
+    width: 24px;
+    max-height: 100%;
+    color: #555;
+}

@@ -1,0 +1,88 @@
+.file-manager {
+    height: 200px;
+    width: 400px;
+    left: 50%;
+    translate-x: -50%;
+    background-color: #111;
+}
+
+.file-manager-reset {
+    width: 100px;
+    height: 50px;
+    bottom: 0;
+    background-color: #9c1c1c;
+}
+
+.file-manager-reset-click {
+    background-color: #591010;
+}
+
+.file-manager-save {
+    width: 100px;
+    height: 50px;
+    bottom: 0;
+    right: 0;
+    background-color: #1d9814;
+}
+
+.file-manager-save-click {
+    background-color: #15780e;
+}
+
+.file-manager-add {
+    left: 110px;
+    right: 110px;
+    height: 50px;
+    bottom: 0;
+    background-color: #145698;
+}
+
+.file-manager-add-click {
+    background-color: #0e3578;
+}
+
+.file-manager-item {
+    width: 100%;
+    height: 50px;
+    background-color: #111;
+    border-color: #aaa;
+    border-width: 1px;
+    padding-left: 10%;
+}
+
+.file-manager-name {
+    left: 0;
+    right: 150px;
+    height: 100%;
+    color: #fff;
+    font-size: 22px;
+    text-align: left center;
+}
+
+.file-manager-move-down {
+    right: 100px;
+    width: 50px;
+    height: 100%;
+    background-color: #333;
+}
+
+.file-manager-move-up {
+    right: 50px;
+    width: 50px;
+    height: 100%;
+    background-color: #444;
+}
+
+.file-manager-remove {
+    right: 0;
+    width: 50px;
+    height: 100%;
+    background-color: #333;
+}
+
+.file-manager-btn-icon {
+    left: 10%;
+    top: 10%;
+    width: 80%;
+    height: 80%;
+}

@@ -1,0 +1,93 @@
+.main-controls {
+    height: 100px;
+    bottom: 0;
+    left: 50%;
+    translate-x: -50%;
+    background-color: #222;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.main-controls-btns {
+    bottom: 0;
+    height: 50%;
+}
+
+.main-controls-sliders {
+    top: 0;
+    height: 50%;
+}
+
+.toggle-playback-btn {
+    left: 0;
+    width: 80px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.save-project-btn {
+    left: 85px;
+    width: 140px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.bounce-project-btn {
+    left: 230px;
+    width: 140px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.toggle-file-manager-btn {
+    right: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #0f3970;
+}
+
+.volume-label {
+    left: 0;
+    width: 90px;
+    height: 100%;
+    color: #fff;
+    font-size: 22px;
+    text-align: right;
+}
+
+.volume-slider {
+    left: 110px;
+    width: 190px;
+    height: 60%;
+    top: 50%;
+    translate-y: -50%;
+    color: #fff;
+    border-color: #2398ec;
+}
+
+.volume-slider-mouse-down {
+    border-color: #2d64e6;
+}
+
+.metronome-label {
+    right: 230px;
+    width: 130px;
+    height: 100%;
+    color: #fff;
+    font-size: 22px;
+    text-align: right;
+}
+
+.metronome-slider {
+    right: 20px;
+    width: 190px;
+    height: 60%;
+    top: 50%;
+    translate-y: -50%;
+    color: #fff;
+    border-color: #e58526;
+}
+
+.metronome-slider-mouse-down {
+    border-color: #bd6f20;
+}

@@ -1,0 +1,107 @@
+.waveform-data {
+    left: 25px;
+    width: 300px;
+    border-color: #fff;
+    border-width: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.waveform-data-name {
+    width: 80%;
+    height: 22%;
+    color: #fff;
+    font-size: 26px;
+    text-align: left;
+}
+
+.waveform-data-mute {
+    right: 0;
+    width: 20%;
+    height: 20%;
+    background-color: #444;
+    border-radius: 10px;
+}
+
+.waveform-data-mute-active {
+    background-color: #ba1b1b;
+}
+
+.waveform-data-mute-click {
+    background-color: #6d0f0f;
+}
+
+.waveform-data-mute-text {
+    color: #fff;
+}
+
+.waveform-data-element {
+    width: 50%;
+    height: 18.75%;
+}
+
+.waveform-data-label {
+    color: #fff;
+    font-size: 22px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.waveform-data-text-input {
+    color: #000;
+    background-color: #fff;
+    border-color: #000;
+    border-width: 1px;
+    font-size: 22px;
+}
+
+.waveform-data-bpm-label {
+    top: 22%;
+    color: #f5618b;
+}
+
+.waveform-data-bpm-input {
+    left: 50%;
+    top: 22.2%;
+    color: #a30051;
+}
+
+.waveform-data-beat-offset-label {
+    top: 40.75%;
+    color: #f5618b;
+}
+
+.waveform-data-beat-offset-input {
+    left: 50%;
+    top: 40.75%;
+    color: #a30051;
+}
+
+.waveform-data-pitch-change-bpm-label {
+    top: 59.5%;
+    color: #4fa6f3;
+}
+
+.waveform-data-pitch-change-bpm-input {
+    left: 50%;
+    top: 59.5%;
+    color: #1442ae;
+}
+
+.waveform-data-pitch-change-btn {
+    height: 18.75%;
+    width: 80%;
+    bottom: 0;
+    left: 50%;
+    translate-x: -50%;
+    background-color: #fff;
+    border-color: #1442ae;
+    border-width: 1px;
+    border-radius: 10px;
+}
+
+.waveform-data-pitch-change-btn-text {
+    color: #1442ae;
+}
