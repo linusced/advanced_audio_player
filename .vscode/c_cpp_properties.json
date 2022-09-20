@@ -3,15 +3,16 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/**",
-                "/usr/local/include/**",
-                "/usr/local/include"
+                "${workspaceFolder}/**"
             ],
             "defines": [],
-            "macFrameworkPath": [],
-            "compilerPath": "/usr/local/bin/gcc-12",
-            "cStandard": "gnu17",
-            "intelliSenseMode": "macos-gcc-x64"
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "intelliSenseMode": "macos-clang-x64",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json"
         }
     ],
     "version": 4

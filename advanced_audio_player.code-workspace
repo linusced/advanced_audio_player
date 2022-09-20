@@ -95,7 +95,8 @@
 			"future": "cpp",
 			"source_location": "cpp",
 			"__memory": "cpp",
-			"filesystem": "cpp"
+			"filesystem": "cpp",
+			"*.in": "cpp"
 		}
 	}
 }

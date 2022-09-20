@@ -1,0 +1,11 @@
+add_library(extra STATIC glad.c stb.c)
+target_include_directories(extra PUBLIC /usr/local/include)
+
+add_subdirectory(lc_gui)
+add_subdirectory(lc_audio)
+add_subdirectory(lc_utility)
+add_subdirectory(file_explorer)
+add_subdirectory(advanced_audio_player)
+add_subdirectory(audio_player_gui)
+add_subdirectory(draw_loops)
+add_subdirectory(main)
