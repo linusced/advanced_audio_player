@@ -1,0 +1,3 @@
+[submodule "external/libsamplerate"]
+	path = external/libsamplerate
+	url = https://github.com/libsndfile/libsamplerate
