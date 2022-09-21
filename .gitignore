@@ -1,4 +1,4 @@
 build
 .vscode
-advanced_audio_player.code-workspace
+*.code-workspace
 .DS_Store
