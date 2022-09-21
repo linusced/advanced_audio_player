@@ -1,5 +1,6 @@
 #include "draw_loops/draw_loops.hpp"
 #include "main/main.hpp"
+#include "config.hpp"
 
 enum LoopType
 {
@@ -11,12 +12,12 @@ int main(int argc, char const *argv[])
 {
     lc_gui::init(true);
     {
-        std::string assets = getAssetsFilePath(), appSupport = getApplicationSupportFilePath("Advanced Audio Player");
+        std::string assets = getAssetsFilePath(), appSupport = getApplicationSupportFilePath(PROJECT_NAME);
 
         lc_gui::Layout windowLayout{-1, -1, lc_gui::Window::getMonitorWidth(), lc_gui::Window::getMonitorHeight()};
         window_position::load(appSupport, &windowLayout);
 
-        lc_gui::Window window{windowLayout.x, windowLayout.y, windowLayout.width, windowLayout.height, "Advanced Audio Player"};
+        lc_gui::Window window{windowLayout.x, windowLayout.y, windowLayout.width, windowLayout.height, PROJECT_NAME};
         lc_gui::enableBlend();
 
         bool devMode = false;
