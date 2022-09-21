@@ -15,6 +15,9 @@
 #include <OpenAL/al.h>
 #include <OpenAL/alc.h>
 
+#include <AudioFile.h>
+#include <samplerate.h>
+
 namespace lc_audio
 {
     class ID

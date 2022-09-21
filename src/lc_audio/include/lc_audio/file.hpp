@@ -2,9 +2,6 @@
 
 #include "common.hpp"
 
-#include <AudioFile/AudioFile.h>
-#include <samplerate.h>
-
 namespace lc_audio
 {
     class File

@@ -21,15 +21,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/rotate_vector.hpp>
 
-#ifndef STB_IMAGE_IMPLEMENTATION
-#include <stb/stb_image.h>
-#endif
-#ifndef STB_TRUETYPE_IMPLEMENTATION
-#include <stb/stb_truetype.h>
-#endif
-#ifndef STB_IMAGE_RESIZE_IMPLEMENTATION
-#include <stb/stb_image_resize.h>
-#endif
+#include <stb/stb.h>
 
 namespace lc_gui
 {

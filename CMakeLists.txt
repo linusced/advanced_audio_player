@@ -6,20 +6,15 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-find_package(OpenGL REQUIRED)
-find_package(OpenAL REQUIRED)
-find_package(glfw3 REQUIRED)
-
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
-include(AddGitSubmodule)
-
-add_git_submodule(external/libsamplerate)
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
 
 add_subdirectory(config)
+add_subdirectory(external)
 add_subdirectory(src)
 
-set(EXEC a.out)
-set(LIBS glfw samplerate extra draw_loops main
-    "-framework IOKit" "-framework Cocoa" "-framework CoreVideo" "-framework OpenGL" "-framework OpenAL")
+set(OUT a.out)
+set(LINK_LIBS draw_loops main
+     "-framework IOKit" "-framework Cocoa" "-framework CoreVideo" "-framework OpenGL" "-framework OpenAL")
 
 add_subdirectory(app)
