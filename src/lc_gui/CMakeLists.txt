@@ -7,5 +7,5 @@ set(FILES
     basic_elements/button_element.cpp basic_elements/image_element.cpp basic_elements/slider_element.cpp basic_elements/text_element.cpp basic_elements/text_input_element.cpp)
 
 add_library(lc_gui STATIC ${FILES})
-target_link_libraries(lc_gui PUBLIC ${CONAN_LIBS} stb)
+target_link_libraries(lc_gui PUBLIC stb ${CONAN_LIBS_GLAD} ${CONAN_LIBS_GLFW} ${CONAN_LIBS_GLM})
 target_include_directories(lc_gui PUBLIC include/)

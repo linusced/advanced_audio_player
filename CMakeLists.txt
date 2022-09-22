@@ -14,7 +14,6 @@ add_subdirectory(external)
 add_subdirectory(src)
 
 set(OUT a.out)
-set(LINK_LIBS draw_loops main
-     "-framework IOKit" "-framework Cocoa" "-framework CoreVideo" "-framework OpenGL" "-framework OpenAL")
+set(LINK_LIBS draw_loops main)
 
 add_subdirectory(app)
