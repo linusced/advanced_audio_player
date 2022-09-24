@@ -146,7 +146,7 @@ void AdvancedAudioPlayer::fileBounceThread_func(AdvancedAudioPlayer *instance, s
     for (i = 0;; i++)
     {
         for (c = 0; c < instance->NUM_CHANNELS; c++)
-            if (std::abs(outputData[i * instance->NUM_CHANNELS + c]) > 0.001f)
+            if (std::abs(outputData[i * instance->NUM_CHANNELS + c]) > 0.0f)
             {
                 index = i * instance->NUM_CHANNELS - instance->NUM_CHANNELS;
                 b_break = true;
@@ -164,7 +164,7 @@ void AdvancedAudioPlayer::fileBounceThread_func(AdvancedAudioPlayer *instance, s
     for (i = outputSize / 2 - 1;; i--)
     {
         for (c = 0; c < instance->NUM_CHANNELS; c++)
-            if (std::abs(outputData[i * instance->NUM_CHANNELS + c]) > 0.001f)
+            if (std::abs(outputData[i * instance->NUM_CHANNELS + c]) > 0.0f)
             {
                 index = i * instance->NUM_CHANNELS + instance->NUM_CHANNELS;
                 b_break = true;

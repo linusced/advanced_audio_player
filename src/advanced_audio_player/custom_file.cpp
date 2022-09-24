@@ -2,27 +2,30 @@
 
 void AdvancedAudioPlayer::custom_file::load(const std::string &fileDataPath, const std::string &fileBufferPath, unsigned int &numChannels, unsigned int &sampleRate, unsigned int &bpm, double &beatOffset, size_t &playOffset, std::vector<Keyframe> &automation, std::vector<float> &buffer)
 {
-    lc_utility::BinaryFileInput dataIn{fileDataPath};
+    std::vector<int16_t> intBuffer;
+    size_t arrSize;
 
-    numChannels = dataIn.read<uint32_t>();
-    sampleRate = dataIn.read<uint32_t>();
-    bpm = dataIn.read<uint32_t>();
-    beatOffset = dataIn.read<double>();
-    playOffset = dataIn.read<uint64_t>();
+    lc_utility::BinaryFileRead dataIn{fileDataPath};
 
-    size_t automationArrSize = dataIn.read<uint64_t>();
+    uint16_t fileVersion = dataIn.read<uint16_t>();
 
-    if (automationArrSize != 0)
+    if (fileVersion == 1)
     {
-        automation.resize(automationArrSize, Keyframe(0));
-        dataIn.read(automation.data(), automationArrSize);
+        numChannels = dataIn.read<uint8_t>();
+        sampleRate = dataIn.read<uint32_t>();
+        bpm = dataIn.read<uint32_t>();
+        beatOffset = dataIn.read<double>();
+        playOffset = dataIn.read<uint64_t>();
+
+        automation.resize(dataIn.read<uint64_t>(), Keyframe(0));
+        dataIn.read(automation);
+
+        lc_utility::BinaryFileRead bufferIn{fileBufferPath};
+
+        arrSize = bufferIn.size() / sizeof(int16_t);
+        intBuffer.resize(arrSize);
+        bufferIn.read(intBuffer);
     }
-
-    lc_utility::BinaryFileInput bufferIn{fileBufferPath};
-
-    size_t arrSize = bufferIn.read<uint64_t>();
-    std::vector<int16_t> intBuffer(arrSize);
-    bufferIn.read(intBuffer.data(), arrSize);
 
     buffer.resize(arrSize);
     for (size_t i = 0; i < arrSize; i++)
@@ -31,9 +34,11 @@ void AdvancedAudioPlayer::custom_file::load(const std::string &fileDataPath, con
 
 void AdvancedAudioPlayer::custom_file::save(const std::string &fileDataPath, const std::string &fileBufferPath, unsigned int numChannels, unsigned int sampleRate, unsigned int bpm, double beatOffset, size_t playOffset, const std::vector<Keyframe> &automation, const std::vector<float> &buffer, bool bufferDataHasChanged)
 {
-    lc_utility::BinaryFileOutput dataOut{fileDataPath};
+    lc_utility::BinaryFileWrite dataOut{fileDataPath};
 
-    dataOut.write((uint32_t)numChannels);
+    dataOut.write((uint16_t)1); // latest file version
+
+    dataOut.write((uint8_t)numChannels);
     dataOut.write((uint32_t)sampleRate);
     dataOut.write((uint32_t)bpm);
     dataOut.write(beatOffset);
@@ -41,9 +46,7 @@ void AdvancedAudioPlayer::custom_file::save(const std::string &fileDataPath, con
 
     size_t automationArrSize = automation.size();
     dataOut.write((uint64_t)automationArrSize);
-
-    if (automationArrSize != 0)
-        dataOut.write(automation.data(), automation.size());
+    dataOut.write(automation);
 
     if (bufferDataHasChanged)
     {
@@ -52,9 +55,7 @@ void AdvancedAudioPlayer::custom_file::save(const std::string &fileDataPath, con
         for (size_t i = 0; i < arrSize; i++)
             intBuffer[i] = lc_audio::sampleToInt16(buffer[i]);
 
-        lc_utility::BinaryFileOutput bufferOut{fileBufferPath};
-
-        bufferOut.write((uint64_t)arrSize);
-        bufferOut.write(intBuffer.data(), arrSize);
+        lc_utility::BinaryFileWrite bufferOut{fileBufferPath};
+        bufferOut.write(intBuffer);
     }
 }

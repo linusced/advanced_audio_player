@@ -1,8 +1,4 @@
-add_subdirectory(lc_gui)
-add_subdirectory(lc_audio)
-add_subdirectory(lc_utility)
 add_subdirectory(file_explorer)
 add_subdirectory(advanced_audio_player)
 add_subdirectory(audio_player_gui)
 add_subdirectory(draw_loops)
-add_subdirectory(main)

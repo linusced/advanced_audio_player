@@ -4,3 +4,4 @@ set(FILES
 add_library(file_explorer STATIC ${FILES})
 target_link_libraries(file_explorer lc_gui)
 target_include_directories(file_explorer PUBLIC include/)
+ 

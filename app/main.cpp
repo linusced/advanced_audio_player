@@ -1,5 +1,4 @@
 #include "draw_loops/draw_loops.hpp"
-#include "main/main.hpp"
 #include "config.hpp"
 
 enum LoopType
@@ -12,15 +11,35 @@ int main(int argc, char const *argv[])
 {
     lc_gui::init(true);
     {
-        std::string assets = getAssetsFilePath(), appSupport = getApplicationSupportFilePath(PROJECT_NAME);
+        std::string assets = lc_utility::getAssetsFilePath(), appSupport = lc_utility::getApplicationSupportFilePath(PROJECT_NAME);
 
-        lc_gui::Layout windowLayout{-1, -1, lc_gui::Window::getMonitorWidth(), lc_gui::Window::getMonitorHeight()};
-        window_position::load(appSupport, &windowLayout);
+        std::unique_ptr<lc_gui::Window> window;
+        {
+            lc_gui::Layout windowLayout{-1, -1, lc_gui::Window::getMonitorWidth(), lc_gui::Window::getMonitorHeight()};
+            lc_utility::KeyValueFileRead fileIn{appSupport + "window_layout.dat"};
 
-        lc_gui::Window window{windowLayout.x, windowLayout.y, windowLayout.width, windowLayout.height, PROJECT_NAME};
+            auto find = fileIn.find("x", lc_utility::KeyValueFile::DATA_INT);
+            if (find != fileIn.end())
+                find->second.get(windowLayout.x);
+
+            find = fileIn.find("y", lc_utility::KeyValueFile::DATA_INT);
+            if (find != fileIn.end())
+                find->second.get(windowLayout.y);
+
+            find = fileIn.find("width", lc_utility::KeyValueFile::DATA_INT);
+            if (find != fileIn.end())
+                find->second.get(windowLayout.width);
+
+            find = fileIn.find("height", lc_utility::KeyValueFile::DATA_INT);
+            if (find != fileIn.end())
+                find->second.get(windowLayout.height);
+
+            window = std::make_unique<lc_gui::Window>(windowLayout.x, windowLayout.y, windowLayout.width, windowLayout.height, PROJECT_NAME);
+        }
+
         lc_gui::enableBlend();
 
-        bool devMode = false;
+        bool devMode = true;
         for (int i = 1; i < argc; i++)
             if (argv[i] == std::string("-dev"))
                 devMode = true;
@@ -38,25 +57,25 @@ int main(int argc, char const *argv[])
             musicFileIcon = std::make_unique<lc_gui::Texture>(musicFileIconData.bytes, musicFileIconData.width, musicFileIconData.height, musicFileIconData.format);
         }
 
-        FileExplorer fileExplorer{{{".wav", musicFileIcon.get()}, {".aif", musicFileIcon.get()}}, folderIcon.get(), getDefaultFilePaths(), lc_gui::textFileData(assets + "css/file_explorer.css"), &Arial, &window};
+        FileExplorer fileExplorer{{{".wav", musicFileIcon.get()}, {".aif", musicFileIcon.get()}}, folderIcon.get(), lc_utility::getDefaultFilePaths(), lc_gui::textFileData(assets + "css/file_explorer.css"), &Arial, window.get()};
         fileExplorer.resize();
 
         LoopType drawLoopType = devMode ? LOOP_TYPE_MAIN : LOOP_TYPE_MENU;
 
-        while (!window.shouldClose())
+        while (!window->shouldClose())
         {
             switch (drawLoopType)
             {
             case LOOP_TYPE_MENU:
             {
-                MenuLoop menu{assets, appSupport, &Arial, &fileExplorer, &window};
+                MenuLoop menu{assets, appSupport, &Arial, &fileExplorer, window.get()};
                 menu.loop();
                 drawLoopType = LOOP_TYPE_MAIN;
             }
             break;
             case LOOP_TYPE_MAIN:
             {
-                MainLoop main{appSupport + "project-1", devMode, &fileExplorer, assets, appSupport, &Arial, &window};
+                MainLoop main{appSupport + "project-1", devMode, &fileExplorer, assets, appSupport, &Arial, window.get()};
                 main.loop();
                 drawLoopType = LOOP_TYPE_MENU;
             }
@@ -64,7 +83,12 @@ int main(int argc, char const *argv[])
             }
         }
 
-        window_position::save(appSupport, &window);
+        lc_utility::KeyValueFileWrite fileOut{appSupport + "window_layout.dat"};
+
+        fileOut.push_back("x", window->x());
+        fileOut.push_back("y", window->y());
+        fileOut.push_back("width", window->width());
+        fileOut.push_back("height", window->height());
     }
     lc_gui::terminate();
     return 0;

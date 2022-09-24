@@ -43,8 +43,8 @@ public:
 
     const size_t &getFileDuration(size_t index) const;
     const size_t &getFilePlayOffset(size_t index) const;
-    const double &getFileDuration_d(size_t index) const;
-    const double &getFilePlayOffset_d(size_t index) const;
+    double getFileDuration_d(size_t index) const;
+    double getFilePlayOffset_d(size_t index) const;
     std::vector<Keyframe> *getFileAutomation(size_t index);
 
     void setFilePlayOffset(size_t offset, size_t index);

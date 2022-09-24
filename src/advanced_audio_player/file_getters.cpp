@@ -71,7 +71,7 @@ const size_t &AdvancedAudioPlayer::getFilePlayOffset(size_t index) const
 
     return files[index].playOffset;
 }
-const double &AdvancedAudioPlayer::getFileDuration_d(size_t index) const
+double AdvancedAudioPlayer::getFileDuration_d(size_t index) const
 {
     if (fileThread)
         throw std::runtime_error("AdvancedAudioPlayer::getFileDuration_d Cannot access files when file loading thread is active!");
@@ -81,7 +81,7 @@ const double &AdvancedAudioPlayer::getFileDuration_d(size_t index) const
 
     return files[index].duration / D_SAMPLE_RATE;
 }
-const double &AdvancedAudioPlayer::getFilePlayOffset_d(size_t index) const
+double AdvancedAudioPlayer::getFilePlayOffset_d(size_t index) const
 {
     if (fileThread)
         throw std::runtime_error("AdvancedAudioPlayer::getFilePlayOffset_d Cannot access files when file loading thread is active!");
