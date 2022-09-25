@@ -5,7 +5,7 @@ void FileExplorer::createTopbarGUI()
     topbar = std::make_unique<lc_gui::Element>("topbar");
     container->addChild(topbar.get());
 
-    currentPath = std::make_unique<lc_gui::TextElement>(font, "", "current-path", true, false);
+    currentPath = std::make_unique<lc_gui::TextElement>(font, "", "current-path", true, true);
     topbar->addChild(currentPath.get());
 
     parentFolderBtn = std::make_unique<lc_gui::ButtonElement>(topbarBtnCallback, "parent-folder-btn", "parent-folder-btn-click");

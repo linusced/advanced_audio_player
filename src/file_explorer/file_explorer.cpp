@@ -17,7 +17,7 @@ FileExplorer::FileExplorer(std::unordered_map<std::string, lc_gui::Texture *> fi
     container->addChild(directoriesContainer.get());
 
     directoriesContainerScrollBG = std::make_unique<lc_gui::Element>("directory-container-scroll-bg");
-    directoryText = std::make_unique<lc_gui::TextElement>(font, "", "directory-text", false, false, false);
+    directoryText = std::make_unique<lc_gui::TextElement>(font, "", "directory-text", false, true, false);
 
     createSidebarGUI();
     createTopbarGUI();
@@ -26,6 +26,8 @@ FileExplorer::FileExplorer(std::unordered_map<std::string, lc_gui::Texture *> fi
 FileExplorer::~FileExplorer()
 {
     fileNameInput->stopThread();
+    directoryText->stopThread();
+    currentPath->stopThread();
 }
 
 void FileExplorer::resize()
