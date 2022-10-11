@@ -14,7 +14,7 @@ void FileExplorer::createBtmbarGUI()
     fileNameInput = std::make_unique<lc_gui::TextInputElement>(font, "", "file-name-input");
     btmbarContent->addChild(fileNameInput.get());
 
-    btmbarSelectBtn = std::make_unique<lc_gui::ButtonElement>(btmbarSelectCallback, "btmbar-select-btn", "go-btn-click");
+    btmbarSelectBtn = std::make_unique<lc_gui::ButtonElement>("btmbar-select-btn", "go-btn-click", btmbarSelectCallback);
     btmbarContent->addChild(btmbarSelectBtn.get());
 
     btmbarSelectText = std::make_unique<lc_gui::TextElement>(font, "Select", "btn-text", false, false);

@@ -72,7 +72,7 @@ void FileExplorer::updateDirectories()
         d.name = dirEntries[i].path().filename();
         d.isFolder = dirEntries[i].is_directory();
 
-        d.btn = std::make_unique<lc_gui::ButtonElement>(directoryBtnCallback, "directory-btn", "directory-btn-click");
+        d.btn = std::make_unique<lc_gui::ButtonElement>("directory-btn", "directory-btn-click", directoryBtnCallback);
         d.btn->id.push_back(i);
         directoriesContainer->addChild(d.btn.get());
 

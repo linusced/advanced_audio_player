@@ -77,21 +77,21 @@ void MainLoop::updateFileManager(bool reset)
             item.name = std::make_unique<lc_gui::TextElement>(font, nameStr, "file-manager-name", false, false);
             item.container->addChild(item.name.get());
 
-            item.moveDownBtn = std::make_unique<lc_gui::ButtonElement>(fileManagerBtnCallback, "file-manager-move-down", "btn-click");
+            item.moveDownBtn = std::make_unique<lc_gui::ButtonElement>("file-manager-move-down", "btn-click", fileManagerBtnCallback);
             item.moveDownBtn->id = "move-down-" + indexStr;
             item.container->addChild(item.moveDownBtn.get());
 
             item.moveDownBtnIcon = std::make_unique<lc_gui::ImageElement>(moveDownIcon.get(), false, "file-manager-btn-icon");
             item.moveDownBtn->addChild(item.moveDownBtnIcon.get());
 
-            item.moveUpBtn = std::make_unique<lc_gui::ButtonElement>(fileManagerBtnCallback, "file-manager-move-up", "btn-click");
+            item.moveUpBtn = std::make_unique<lc_gui::ButtonElement>("file-manager-move-up", "btn-click", fileManagerBtnCallback);
             item.moveUpBtn->id = "move-up-" + indexStr;
             item.container->addChild(item.moveUpBtn.get());
 
             item.moveUpBtnIcon = std::make_unique<lc_gui::ImageElement>(moveUpIcon.get(), false, "file-manager-btn-icon");
             item.moveUpBtn->addChild(item.moveUpBtnIcon.get());
 
-            item.removeBtn = std::make_unique<lc_gui::ButtonElement>(fileManagerBtnCallback, "file-manager-remove", "btn-click");
+            item.removeBtn = std::make_unique<lc_gui::ButtonElement>("file-manager-remove", "btn-click", fileManagerBtnCallback);
             item.removeBtn->id = "remove-" + indexStr;
             item.container->addChild(item.removeBtn.get());
 

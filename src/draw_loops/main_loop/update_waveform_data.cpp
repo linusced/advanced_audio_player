@@ -57,7 +57,7 @@ void MainLoop::updateWaveformData()
         w.name = std::make_unique<lc_gui::TextElement>(font, nameStr, "waveform-data-name", false, false);
         w.container->addChild(w.name.get());
 
-        w.muteBtn = std::make_unique<lc_gui::ButtonElement>(waveformDataBtnCallback, "waveform-data-mute", "waveform-data-mute-click");
+        w.muteBtn = std::make_unique<lc_gui::ButtonElement>("waveform-data-mute", "waveform-data-mute-click", waveformDataBtnCallback);
         w.muteBtn->id = "mute-" + indexStr;
         w.container->addChild(w.muteBtn.get());
 
@@ -88,7 +88,7 @@ void MainLoop::updateWaveformData()
         w.pitchChangeBpmInput->onlyCallbackOnEnterPress = w.pitchChangeBpmInput->resetTextOnEscape = true;
         w.container->addChild(w.pitchChangeBpmInput.get());
 
-        w.pitchChangeBtn = std::make_unique<lc_gui::ButtonElement>(waveformDataBtnCallback, "waveform-data-pitch-change-btn", "btn-click-light");
+        w.pitchChangeBtn = std::make_unique<lc_gui::ButtonElement>("waveform-data-pitch-change-btn", "btn-click-light", waveformDataBtnCallback);
         w.pitchChangeBtn->id = "pitch-change-" + indexStr;
         w.container->addChild(w.pitchChangeBtn.get());
 

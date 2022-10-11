@@ -22,7 +22,7 @@ void FileExplorer::createSidebarGUI()
         d.name = it->first;
         d.isFolder = true;
 
-        d.btn = std::make_unique<lc_gui::ButtonElement>(defaultFolderBtnCallback, "directory-btn", "directory-btn-click");
+        d.btn = std::make_unique<lc_gui::ButtonElement>("directory-btn", "directory-btn-click", defaultFolderBtnCallback);
         d.btn->id.push_back(i);
         sidebar->addChild(d.btn.get());
 

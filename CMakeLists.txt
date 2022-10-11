@@ -11,13 +11,13 @@ conan_basic_setup()
 
 include(FetchContent)
 
-FetchContent_Declare(lc_gui GIT_REPOSITORY https://github.com/linusced/lc_gui GIT_TAG 1.0.1)
+FetchContent_Declare(lc_gui GIT_REPOSITORY https://github.com/linusced/lc_gui GIT_TAG 1.0.4)
 FetchContent_MakeAvailable(lc_gui)
 
 FetchContent_Declare(lc_audio GIT_REPOSITORY https://github.com/linusced/lc_audio GIT_TAG 1.0.0)
 FetchContent_MakeAvailable(lc_audio)
 
-FetchContent_Declare(lc_utility GIT_REPOSITORY https://github.com/linusced/lc_utility GIT_TAG 0.2.0)
+FetchContent_Declare(lc_utility GIT_REPOSITORY https://github.com/linusced/lc_utility GIT_TAG 0.2.2)
 FetchContent_MakeAvailable(lc_utility)
 
 add_subdirectory(config)

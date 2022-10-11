@@ -63,6 +63,7 @@ void FileExplorer::open(std::string dirPath, bool fileNameInput, std::string fil
         k.second = false;
 
     updateDirectories();
+    renderer->resize();
 }
 
 const bool &FileExplorer::isActive() const

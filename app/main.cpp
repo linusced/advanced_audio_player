@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
 {
     lc_gui::init(true);
     {
-        std::string assets = lc_utility::getAssetsFilePath(), appSupport = lc_utility::getApplicationSupportFilePath(PROJECT_NAME);
+        const lc_utility::FilePath assets = lc_utility::getAssetsFilePath(), appSupport = lc_utility::getApplicationSupportFilePath(PROJECT_NAME.data());
 
         std::unique_ptr<lc_gui::Window> window;
         {
@@ -34,12 +34,12 @@ int main(int argc, char const *argv[])
             if (find != fileIn.end())
                 find->second.get(windowLayout.height);
 
-            window = std::make_unique<lc_gui::Window>(windowLayout.x, windowLayout.y, windowLayout.width, windowLayout.height, PROJECT_NAME);
+            window = std::make_unique<lc_gui::Window>(windowLayout.x, windowLayout.y, windowLayout.width, windowLayout.height, PROJECT_NAME.data());
         }
 
         lc_gui::enableBlend();
 
-        bool devMode = true;
+        bool devMode{false};
         for (int i = 1; i < argc; i++)
             if (argv[i] == std::string("-dev"))
                 devMode = true;
@@ -60,7 +60,12 @@ int main(int argc, char const *argv[])
         FileExplorer fileExplorer{{{".wav", musicFileIcon.get()}, {".aif", musicFileIcon.get()}}, folderIcon.get(), lc_utility::getDefaultFilePaths(), lc_gui::textFileData(assets + "css/file_explorer.css"), &Arial, window.get()};
         fileExplorer.resize();
 
+        lc_utility::FilePath projectPath = appSupport + "projects";
+
         LoopType drawLoopType = devMode ? LOOP_TYPE_MAIN : LOOP_TYPE_MENU;
+
+        if (devMode)
+            projectPath += "dev";
 
         while (!window->shouldClose())
         {
@@ -68,16 +73,17 @@ int main(int argc, char const *argv[])
             {
             case LOOP_TYPE_MENU:
             {
-                MenuLoop menu{assets, appSupport, &Arial, &fileExplorer, window.get()};
+                MenuLoop menu{&assets, &appSupport, &projectPath, &Arial, &fileExplorer, window.get()};
                 menu.loop();
                 drawLoopType = LOOP_TYPE_MAIN;
             }
             break;
             case LOOP_TYPE_MAIN:
             {
-                MainLoop main{appSupport + "project-1", devMode, &fileExplorer, assets, appSupport, &Arial, window.get()};
+                MainLoop main{projectPath, devMode, &fileExplorer, std::string(assets) + '/', std::string(appSupport) + '/', &Arial, window.get()}; // update to use lc_utility::FilePath
                 main.loop();
                 drawLoopType = LOOP_TYPE_MENU;
+                projectPath = appSupport + "projects";
             }
             break;
             }

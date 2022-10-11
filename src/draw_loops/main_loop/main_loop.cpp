@@ -81,19 +81,19 @@ MainLoop::MainLoop(std::string projectFolderPath, bool devMode, FileExplorer *fi
     bottom.unit = lc_gui::Style::PIXELS;
     bottom.value = guiRenderer->getStyle("main-controls")->sizeProperties.at("height").value;
 
-    fileManagerResetBtn = std::make_unique<lc_gui::ButtonElement>(fileManagerBtnCallback, "file-manager-reset", "file-manager-reset-click");
+    fileManagerResetBtn = std::make_unique<lc_gui::ButtonElement>("file-manager-reset", "file-manager-reset-click", fileManagerBtnCallback);
     fileManagerResetBtn->id = "reset-0";
 
     fileManagerResetText = std::make_unique<lc_gui::TextElement>(font, "Reset", "btn-text", false, false);
     fileManagerResetBtn->addChild(fileManagerResetText.get());
 
-    fileManagerSaveBtn = std::make_unique<lc_gui::ButtonElement>(fileManagerBtnCallback, "file-manager-save", "file-manager-save-click");
+    fileManagerSaveBtn = std::make_unique<lc_gui::ButtonElement>("file-manager-save", "file-manager-save-click", fileManagerBtnCallback);
     fileManagerSaveBtn->id = "save-0";
 
     fileManagerSaveText = std::make_unique<lc_gui::TextElement>(font, "Save", "btn-text", false, false);
     fileManagerSaveBtn->addChild(fileManagerSaveText.get());
 
-    fileManagerAddBtn = std::make_unique<lc_gui::ButtonElement>(fileManagerBtnCallback, "file-manager-add", "file-manager-add-click");
+    fileManagerAddBtn = std::make_unique<lc_gui::ButtonElement>("file-manager-add", "file-manager-add-click", fileManagerBtnCallback);
     fileManagerAddBtn->id = "add-0";
 
     fileManagerAddText = std::make_unique<lc_gui::TextElement>(font, "Open new file", "btn-text", false, false);

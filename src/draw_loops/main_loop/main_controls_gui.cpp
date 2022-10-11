@@ -8,28 +8,28 @@ void MainLoop::createMainControlsGUI()
     mainControlsBtns = std::make_unique<lc_gui::Element>("main-controls-btns");
     mainControls->addChild(mainControlsBtns.get());
 
-    togglePlaybackBtn = std::make_unique<lc_gui::ButtonElement>(mainControlsBtnCallback, "toggle-playback-btn", "btn-click-light");
+    togglePlaybackBtn = std::make_unique<lc_gui::ButtonElement>("toggle-playback-btn", "btn-click-light", mainControlsBtnCallback);
     togglePlaybackBtn->id = "toggle-playback";
     mainControlsBtns->addChild(togglePlaybackBtn.get());
 
     togglePlaybackText = std::make_unique<lc_gui::TextElement>(font, "Play", "btn-text btn-text-dark", false, false);
     togglePlaybackBtn->addChild(togglePlaybackText.get());
 
-    saveProjectBtn = std::make_unique<lc_gui::ButtonElement>(mainControlsBtnCallback, "save-project-btn", "btn-click-light");
+    saveProjectBtn = std::make_unique<lc_gui::ButtonElement>("save-project-btn", "btn-click-light", mainControlsBtnCallback);
     saveProjectBtn->id = "save-project";
     mainControlsBtns->addChild(saveProjectBtn.get());
 
     saveProjectText = std::make_unique<lc_gui::TextElement>(font, "Save project", "btn-text btn-text-dark", false, false);
     saveProjectBtn->addChild(saveProjectText.get());
 
-    bounceProjectBtn = std::make_unique<lc_gui::ButtonElement>(mainControlsBtnCallback, "bounce-project-btn", "btn-click-light");
+    bounceProjectBtn = std::make_unique<lc_gui::ButtonElement>("bounce-project-btn", "btn-click-light", mainControlsBtnCallback);
     bounceProjectBtn->id = "bounce-project";
     mainControlsBtns->addChild(bounceProjectBtn.get());
 
     bounceProjectText = std::make_unique<lc_gui::TextElement>(font, "Bounce project", "btn-text btn-text-dark", false, false);
     bounceProjectBtn->addChild(bounceProjectText.get());
 
-    toggleFileManagerBtn = std::make_unique<lc_gui::ButtonElement>(mainControlsBtnCallback, "toggle-file-manager-btn", "btn-click");
+    toggleFileManagerBtn = std::make_unique<lc_gui::ButtonElement>("toggle-file-manager-btn", "btn-click", mainControlsBtnCallback);
     toggleFileManagerBtn->id = "toggle-file-manager";
     mainControlsBtns->addChild(toggleFileManagerBtn.get());
 
