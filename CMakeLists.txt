@@ -23,7 +23,5 @@ FetchContent_MakeAvailable(lc_utility)
 add_subdirectory(config)
 add_subdirectory(src)
 
-set(OUT a.out) 
 set(LINK_LIBS draw_loops)
 add_subdirectory(app)
- 

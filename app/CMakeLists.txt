@@ -1,3 +1,3 @@
-add_executable(${OUT} main.cpp)
-target_link_libraries(${OUT} PUBLIC ${LINK_LIBS})
-target_include_directories(${OUT} PUBLIC "${CMAKE_BINARY_DIR}/config/include/")
+add_executable(a.out main.cpp)
+target_link_libraries(a.out PUBLIC ${LINK_LIBS})
+target_include_directories(a.out PUBLIC "${CMAKE_BINARY_DIR}/config/include/")
